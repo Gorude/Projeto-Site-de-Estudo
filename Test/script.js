@@ -17,10 +17,10 @@ document.write(`Delta    : ${(b*b)-(4*a*c)}<br>
                 Sem resultado.`)
 }
 */
-const bot = document.getElementById('botao1');
+const bot = document.getElementById('refresh');
 const paragrafo = document.getElementById('msg');
 bot.addEventListener('click', function() {
-  paragrafo.textContent = 'Olá, Naviraí! O botão foi clicado às ' + new Date().toLocaleTimeString();
+  paragrafo.textContent = 'Olá, Bom dia! O botão foi clicado às ' + new Date().toLocaleTimeString();
 });
 
 
