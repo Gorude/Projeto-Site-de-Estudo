@@ -17,12 +17,26 @@ document.write(`Delta    : ${(b*b)-(4*a*c)}<br>
                 Sem resultado.`)
 }
 */
+const bodyElement = document.body;
 const bot = document.getElementById('refresh');
+const bulb = document.getElementById('light');
 const paragrafo = document.getElementById('msg');
+
+const titulo = document.getElementById('titulo');
+const lorem_box = document.getElementById('lorem_box');
+const botoes = document.getElementById('botoes');
+const text_input = document.getElementById('text_input');
 bot.addEventListener('click', function() {
   paragrafo.textContent = 'Olá, Bom dia! O botão foi clicado às ' + new Date().toLocaleTimeString();
 });
+bulb.addEventListener('click', function() {
+  const gradiente = bodyElement.classList.toggle('gradiente_fundo')
 
+  // titulo.classList.toggle('shadow')
+  lorem_box.classList.toggle('shadow')
+  botoes.classList.toggle('shadow')
+  text_input.classList.toggle('shadow')
+});
 
 
 
