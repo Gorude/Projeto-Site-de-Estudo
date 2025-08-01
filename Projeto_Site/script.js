@@ -1,3 +1,119 @@
+const bodyElement = document.body;
+const bot = document.getElementById('refresh');
+const bulb = document.getElementById('light');
+const conf = document.getElementById('config');
+const calc = document.getElementById('calculator');
+const paragrafo = document.getElementById('msg');
+const tema = document.getElementById('brightness');
+const icone = document.getElementById('sun_moon');
+const boticon = document.getElementById('bot_icon')
+const boticon2 = document.getElementById('bot_icon2')
+const boticon3 = document.getElementById('bot_icon3')
+const boticon4 = document.getElementById('bot_icon4')
+
+const titulo = document.getElementById('titulo');
+const lorem_box = document.getElementById('lorem_box');
+const botoes = document.getElementById('botoes');
+const text_input = document.getElementById('text_input');
+
+let isMoon = true;
+let isON = false;
+bot.addEventListener('click', function() {
+  paragrafo.textContent = 'Olá, Bom dia! O botão foi clicado às ' + new Date().toLocaleTimeString();
+});
+
+bulb.addEventListener('click', function() {
+  bodyElement.classList.toggle('gradiente_fundo')
+  lorem_box.classList.toggle('shadow')
+  botoes.classList.toggle('shadow')
+  text_input.classList.toggle('shadow')
+  isON = !isON;
+});
+
+tema.addEventListener('click', () => {
+if(!isMoon) {
+  icone.classList.remove('fa-sun');
+  icone.classList.add('fa-moon');
+  icone.style.color = 'rgb(255, 255, 255)';
+
+  bodyElement.classList.toggle('toggle_light');
+  lorem_box.classList.toggle('toggle_light');
+  text_input.classList.toggle('toggle_light');
+  tema.classList.toggle('toggle_light');
+  boticon.classList.toggle('toggle_light');
+  boticon2.classList.toggle('toggle_light');
+  boticon3.classList.toggle('toggle_light');
+  boticon4.classList.toggle('toggle_light');
+  bot.classList.toggle('toggle_light');
+  bulb.classList.toggle('toggle_light');
+  conf.classList.toggle('toggle_light');
+  calc.classList.toggle('toggle_light');
+
+}else{
+  icone.classList.remove('fa-moon');
+  icone.classList.add('fa-sun');
+  icone.style.color = 'rgb(0, 0, 0)';
+
+  bodyElement.classList.toggle('toggle_light');
+  lorem_box.classList.toggle('toggle_light');
+  text_input.classList.toggle('toggle_light');
+  tema.classList.toggle('toggle_light');
+  boticon.classList.toggle('toggle_light');
+  boticon2.classList.toggle('toggle_light');
+  boticon3.classList.toggle('toggle_light');
+  boticon4.classList.toggle('toggle_light');
+  bot.classList.toggle('toggle_light');
+  bulb.classList.toggle('toggle_light');
+  conf.classList.toggle('toggle_light');
+  calc.classList.toggle('toggle_light');
+}
+isMoon = !isMoon
+});
+
+document.addEventListener('click', function(){
+if(!isMoon && !isON){
+  titulo.style.color = 'rgba(31, 31, 31, 1)';
+  paragrafo.style.color = 'rgba(31, 31, 31, 1)';
+}else{
+  titulo.style.color = 'rgba(255, 255, 255, 1)';
+  paragrafo.style.color = 'rgba(255, 255, 255, 1)';
+}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 var π = 3.1415
 window.alert('Minha primeira mensagem!')//Janela de Aviso com botão OK
@@ -17,28 +133,6 @@ document.write(`Delta    : ${(b*b)-(4*a*c)}<br>
                 Sem resultado.`)
 }
 */
-const bodyElement = document.body;
-const bot = document.getElementById('refresh');
-const bulb = document.getElementById('light');
-const paragrafo = document.getElementById('msg');
-
-const titulo = document.getElementById('titulo');
-const lorem_box = document.getElementById('lorem_box');
-const botoes = document.getElementById('botoes');
-const text_input = document.getElementById('text_input');
-bot.addEventListener('click', function() {
-  paragrafo.textContent = 'Olá, Bom dia! O botão foi clicado às ' + new Date().toLocaleTimeString();
-});
-bulb.addEventListener('click', function() {
-  const gradiente = bodyElement.classList.toggle('gradiente_fundo')
-
-  // titulo.classList.toggle('shadow')
-  lorem_box.classList.toggle('shadow')
-  botoes.classList.toggle('shadow')
-  text_input.classList.toggle('shadow')
-});
-
-
 
 
 
