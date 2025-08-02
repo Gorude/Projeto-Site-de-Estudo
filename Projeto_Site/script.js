@@ -45,6 +45,7 @@ if(!isMoon) {
   icone.classList.add('fa-moon');
   icone.style.color = 'rgb(255, 255, 255)';
   calc_result.style.backgroundColor = 'rgb(31, 31, 31)';
+  calc_result.style.color = 'rgba(0, 240, 72, 1)';
 
   calc_arrast.classList.toggle('toggle_light');
   bodyElement.classList.toggle('toggle_light');
@@ -65,6 +66,7 @@ if(!isMoon) {
   icone.classList.add('fa-sun');
   icone.style.color = 'rgb(0, 0, 0)';
   calc_result.style.backgroundColor = 'rgba(189, 189, 189, 1)';
+  calc_result.style.color = 'rgba(31, 31, 31, 1)';
 
   calc_arrast.classList.toggle('toggle_light');
   bodyElement.classList.toggle('toggle_light');
@@ -119,11 +121,34 @@ calc.addEventListener('click', () => {
   calc_arrast.classList.toggle('hidden_calculadora');
 });
 
-
-
-
-
-
+function iniciarCalculadora() {
+const botoesCalculadora = document.querySelectorAll('.botao_calc');
+botoesCalculadora.forEach(button => {
+  button.addEventListener('click', () => {
+    const valor = button.textContent;
+    if (valor === 'C') {
+      calc_result.value = '0';
+    } else if (valor === '←') {
+      calc_result.value = calc_result.value.slice(0, -1) || '0';
+    } else if (valor === '=') {
+      try {
+        calc_result.value = eval(calc_result.value.replace(/x/g, '*').replace(/÷/g, '/'));
+      } catch (error) {
+        calc_result.value = 'Erro';
+      }
+    } else {
+      if (calc_result.value === '0' && ['+', '-', '*', '/'].includes(valor)) {
+        calc_result.value += valor;
+      } else if (calc_result.value === '0') {
+        calc_result.value = valor;
+      } else {
+        calc_result.value += valor;
+      }
+    }
+  });
+});
+}
+iniciarCalculadora();
 
 
 
