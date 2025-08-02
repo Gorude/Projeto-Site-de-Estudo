@@ -1,3 +1,4 @@
+
 const bodyElement = document.body;
 const bot = document.getElementById('refresh');
 const bulb = document.getElementById('light');
@@ -16,17 +17,25 @@ const lorem_box = document.getElementById('lorem_box');
 const botoes = document.getElementById('botoes');
 const text_input = document.getElementById('text_input');
 
+const calc_arrast = document.getElementById('calc_arrast')
+const calc_result = document.getElementById('calc_result_id')
+
 let isMoon = true;
 let isON = false;
+let arrastando = false;
+let offsetX, offsetY;
+
 bot.addEventListener('click', function() {
   paragrafo.textContent = 'Olá, Bom dia! O botão foi clicado às ' + new Date().toLocaleTimeString();
 });
 
 bulb.addEventListener('click', function() {
-  bodyElement.classList.toggle('gradiente_fundo')
-  lorem_box.classList.toggle('shadow')
-  botoes.classList.toggle('shadow')
-  text_input.classList.toggle('shadow')
+  bodyElement.classList.toggle('gradiente_fundo');
+  lorem_box.classList.toggle('shadow');
+  botoes.classList.toggle('shadow');
+  text_input.classList.toggle('shadow');
+  calc_arrast.classList.toggle('shadow');
+  tema.classList.toggle('shadow');
   isON = !isON;
 });
 
@@ -35,7 +44,9 @@ if(!isMoon) {
   icone.classList.remove('fa-sun');
   icone.classList.add('fa-moon');
   icone.style.color = 'rgb(255, 255, 255)';
+  calc_result.style.backgroundColor = 'rgb(31, 31, 31)';
 
+  calc_arrast.classList.toggle('toggle_light');
   bodyElement.classList.toggle('toggle_light');
   lorem_box.classList.toggle('toggle_light');
   text_input.classList.toggle('toggle_light');
@@ -53,7 +64,9 @@ if(!isMoon) {
   icone.classList.remove('fa-moon');
   icone.classList.add('fa-sun');
   icone.style.color = 'rgb(0, 0, 0)';
+  calc_result.style.backgroundColor = 'rgba(189, 189, 189, 1)';
 
+  calc_arrast.classList.toggle('toggle_light');
   bodyElement.classList.toggle('toggle_light');
   lorem_box.classList.toggle('toggle_light');
   text_input.classList.toggle('toggle_light');
@@ -80,12 +93,31 @@ if(!isMoon && !isON){
 }
 });
 
+calc_arrast.addEventListener('mousedown', (event) => {
+arrastando = true;
 
+offsetX = event.clientX - calc_arrast.getBoundingClientRect().left;
+offsetY = event.clientY - calc_arrast.getBoundingClientRect().top;
+calc_arrast.classList.add('active');
+});
 
+document.addEventListener('mousemove', (event) =>{
+  if(!arrastando) return;
 
+  const newX = event.clientX - offsetX;
+  const newY = event.clientY - offsetY;
+  calc_arrast.style.left = `${newX}px`;
+  calc_arrast.style.top = `${newY}px`;
+});
 
+document.addEventListener('mouseup', () => {
+    arrastando = false;
+    calc_arrast.classList.remove('active');
+});
 
-
+calc.addEventListener('click', () => {
+  calc_arrast.classList.toggle('hidden_calculadora');
+});
 
 
 
